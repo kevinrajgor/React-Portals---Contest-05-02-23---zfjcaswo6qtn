@@ -2,18 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 //complete this function using portals
-const PortalButton = (params) => {
+const PortalButton = (props) => {
   return ReactDOM.createPortal(
-    <button id="button" onClick={params.buttonclick}>
-      Click
-    </button>,
+    <div>
+      <button
+        id="button"
+        onClick={() => {
+          props.buttonclick();
+        }}
+      >
+        Click
+      </button>
+    </div>,
     document.getElementById("portal-button"),
   );
-  //     return (
-  //         <div>
-  //             <button id="button" onClick={}>Click</button>
-  //         </div>
-
-  //     )
 };
 export default PortalButton;
+
+//portal-button id will be used here for portal purpose

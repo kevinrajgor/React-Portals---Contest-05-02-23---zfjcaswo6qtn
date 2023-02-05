@@ -5,26 +5,20 @@ import PortalTextArea from "./PortalTextArea.js";
 
 //complete the function
 const App = () => {
-  let [text, useText] = useState("");
-  let [textAreaValue, useTextAreaValue] = useState("");
+  const inpref = useRef(null);
+  const [val, setVal] = useState("");
+  const changeText = () => {
+    setVal(inpref.current.value);
+    inpref.current.value = "";
+  };
 
   return (
     <div id="main">
-      <input
-        id="input"
-        value={text}
-        onChange={(e) => {
-          useText(e.target.value);
-        }}
-      ></input>
+      <input id="input" ref={inpref}></input>
       <br />
-      <PortalButton
-        buttonclick={() => {
-          useTextAreaValue(text);
-        }}
-      />
+      <PortalButton buttonclick={changeText} />
       <br />
-      <PortalTextArea value={textAreaValue} />
+      <PortalTextArea valu={val} />
     </div>
   );
 };
